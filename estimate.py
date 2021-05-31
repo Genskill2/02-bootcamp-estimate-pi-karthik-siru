@@ -1,5 +1,6 @@
 import math
 import unittest
+import random
 
 def wallis(n ):
     pi = 1 
@@ -8,6 +9,19 @@ def wallis(n ):
         pi *= n 
     return pi*2 
 
+def monte_carlo(n):
+    circle_points = 0
+    square_points = 0
+    for i in range(n):
+        a,b =  random.random() , random.random()
+        if a**2 + b**2  >= 1 :
+            square_points += 1
+        else :
+            circle_points += 1 
+
+    if square_points :
+        return (4*circle_points) / (circle_points+square_points)
+    
 
 
 class TestWallis(unittest.TestCase):
